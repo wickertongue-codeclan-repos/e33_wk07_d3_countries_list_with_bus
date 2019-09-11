@@ -3,16 +3,23 @@
   <div>
     <h1>This is a Heading</h1>
       <div>
+        <select id="selectedCountry">
+          <option v-for="(country, index) in countries" v-bind:value="index">
+            {{country.name}}
+          </option>
+        </select>
         <country-detail :country="selectedCountry"></country-detail>
-        <countries-list :countries="countries"></countries-list>
       </div>
   </div>
+
+<!-- v-model 
+
+v-onchange -->
 
 </template>
 
 <script>
 import CountryDetail from './components/CountryDetail.vue';
-import CountriesList from './components/CountriesList.vue';
 import {eventBus} from './main.js';
 
 export default {
@@ -33,7 +40,6 @@ export default {
     })
   },
   components: {
-    "countries-list": CountriesList,
     "country-detail": CountryDetail
   }
 }
